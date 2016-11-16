@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Demo Test Plan" verbose="1">
+	
+	<test name="Functional Tests" preserve-order="true">
+		<classes>
+			<parameter name="manufacturer" value="Samsung"/>
+			<parameter name="maxPrice" value="1000"/>
+			<parameter name="minimumReleaseYear" value="2013"/>
+			<parameter name="diagonalMin" value="39"/>
+			<parameter name="diagonalMax" value="42"/>
+ 			<class name="onliner.FindUsingFiltersTest" />
+        </classes>
+	</test>
+</suite>
