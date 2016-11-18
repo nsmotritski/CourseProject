@@ -3,6 +3,7 @@ package webdriver.elements;
 import java.lang.reflect.Field;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
@@ -71,12 +72,17 @@ public abstract class BaseElement extends BaseEntity {
 		return element;
 	}
 
-	public List<WebElement> getElements(By locator) {
+	/**
+	 * @return
+	 * @return List<String>
+	 */
+	public List<String> getElements(By locator) {
+		List<String> searchResultURLs = new ArrayList<String>();
 		List<WebElement> elements = browser.getDriver().findElements(locator);
 		for (WebElement webElement:elements) {
-			waitForIsElementPresent();
+			searchResultURLs.add(webElement.getAttribute("href"));
 		}
-		return elements;
+		return searchResultURLs;
 	}
 
 
@@ -265,6 +271,19 @@ public abstract class BaseElement extends BaseEntity {
 	public String getText() {
 		waitForIsElementPresent();
 		return element.getText();
+	}
+
+	/**
+	 * Compiles the text of an element against RegEx pattern and returns matching string
+	 */
+	public String compileElementTextAgainstPattern (String s) {
+		Pattern pattern = Pattern.compile(s);
+		Matcher matcher = pattern.matcher(element.getText());
+		String result = "";
+		while (matcher.find()) {
+			result = matcher.group(1);
+		}
+		return result;
 	}
 
 		

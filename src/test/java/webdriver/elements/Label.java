@@ -12,8 +12,6 @@ public class Label extends BaseElement {
 		super(string, name);
 	}
 
-	
-
 	public Label(By locator) {
 		super(locator);
 	}

@@ -57,12 +57,15 @@ public class FindUsingFiltersTest extends BaseTest {
 
         logger.step(4);
         browser.waitForListOfElements(catalogOnlinerTVs.searchResultsDiv,".//div[@id='schema-products']//div[contains(@class,'title')]");
-        List<WebElement> searchItemList = catalogOnlinerTVs.searchResultsDiv.getElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
+
+        logger.step(5);
+        catalogOnlinerTVs.checkResults(manufacturer,maxPrice,minReleaseYear,diagonalMin,diagonalMax);
+/*        List<WebElement> searchItemList = catalogOnlinerTVs.searchResultsDiv.getElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
         //searchItemList = browser.getDriver().findElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
         for (WebElement webElement: searchItemList) {
             logger.info(webElement.getText());
         }
         logger.info("Final line before assert");
-        catalogOnlinerTVs.checkResults(searchItemList,"Samsung","1000","","39","42");
+        catalogOnlinerTVs.checkResults(searchItemList,"Samsung","1000","","39","42");*/
     }
 }

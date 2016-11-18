@@ -22,16 +22,11 @@ public class CatalogOnlinerTVs extends BaseForm {
     private Dropdown diagonalFromFilter = new Dropdown(By.xpath("//span[.='Диагональ']/../following-sibling::div/div/div/select[contains(@data-bind,'from')]"),"Diagonal min");
     private Dropdown diagonalToFilter = new Dropdown(By.xpath("//span[.='Диагональ']/../following-sibling::div/div/div/select[contains(@data-bind,\"to\")]"),"Diagonal max");
     public Container searchResultsDiv = new Container(By.xpath(".//div[@id='schema-products']"));
-    private List<Link> searchResults;
+    private List<String> searchResults;
 
-   /* public void getSearchRetults () {
+    public void getSearchRetults () {
         searchResults = searchResultsDiv.getElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
-    }*/
-
-   /* public void getSearchResults (By by) {
-        searchResults = getElements(by);
-    }*/
-
+    }
 
     public CatalogOnlinerTVs() {
         super(By.xpath("//div[@id='fast-search']/form/input[@data-project='catalog_public']"), "Catalog Onliner.by");
@@ -49,10 +44,7 @@ public class CatalogOnlinerTVs extends BaseForm {
         this.releasedAfterYearFilter.setText(i.toString());
     }
 
-    public void setDiagonalFromFilter(String s) {
-        diagonalFromFilter.setValue(s);
-
-    }
+    public void setDiagonalFromFilter(String s) { diagonalFromFilter.setValue(s); }
 
     public void setDiagonalToFilter(String s) {
         diagonalToFilter.setValue(s);
@@ -67,31 +59,13 @@ public class CatalogOnlinerTVs extends BaseForm {
         setDiagonalToFilter(diagonalTo);
     }
 
-    private static Integer getTVDiagonal (String text) {
-        Pattern pattern = Pattern.compile("[0-9][0-9]\"");
-        Matcher matcher = pattern.matcher(text);
-        String s = "";
-        while (matcher.find()) {
-            s = matcher.group(1);
+    public void checkResults (String manufacturerFilterValue, int maxPriceFilterValue, int releasedAfterYearFilterValue, int diagonalFromFilterValue, int diagonalToFilterValue) {
+        for (String url :searchResults) {
+            logger.info("Checking TV URL:" + url);
+            browser.navigate(url);
+            TVDetailPage tvDetailPage = new TVDetailPage();
+            tvDetailPage.checkTVParameters(manufacturerFilterValue,maxPriceFilterValue,releasedAfterYearFilterValue, diagonalFromFilterValue, diagonalToFilterValue);
         }
-        return Integer.parseInt(s);
-    }
-
-
-
-    public boolean checkResults (List<WebElement> elements, String manufacturerFilterValue, String maxPriceFilterValue, String releasedAfterYearFilterValue, String diagonalFromFilterValue, String diagonalToFilterValue) {
-        for (WebElement element:elements) {
-            logger.info("Checking element:" + element.getText());
-            Assert.assertTrue(element.getText().contains(manufacturerFilterValue));
-            Assert.assertTrue(element.getText().contains(maxPriceFilterValue));
-            Assert.assertTrue((Integer.parseInt(diagonalFromFilterValue)<=getTVDiagonal(element.getText())) && (getTVDiagonal(element.getText())<=Integer.parseInt(diagonalToFilterValue)));
-/*            if (element.getText().contains(releasedAfterYearFilterValue)) {
-                logger.info("Release Year OK for element " + element.getText());
-            }
-            else {result = false;}*/
-
-        }
-        return true;
     }
 
 
