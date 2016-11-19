@@ -1,19 +1,10 @@
 package onliner.forms;
 
-import onliner.SearchItem;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import webdriver.BaseForm;
-import webdriver.Browser;
 import webdriver.elements.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CatalogOnlinerTVs extends BaseForm {
     private Checkbox manufacturerFilter = new Checkbox(By.xpath("//span[@class='schema-filter__checkbox-text' and .='Samsung']"),"Manufacturer");
@@ -24,8 +15,9 @@ public class CatalogOnlinerTVs extends BaseForm {
     public Container searchResultsDiv = new Container(By.xpath(".//div[@id='schema-products']"));
     private List<String> searchResults;
 
-    public void getSearchRetults () {
+    public List<String> getSearchRetults () {
         searchResults = searchResultsDiv.getElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
+    return searchResults;
     }
 
     public CatalogOnlinerTVs() {
@@ -59,7 +51,7 @@ public class CatalogOnlinerTVs extends BaseForm {
         setDiagonalToFilter(diagonalTo);
     }
 
-    public void checkResults (String manufacturerFilterValue, int maxPriceFilterValue, int releasedAfterYearFilterValue, int diagonalFromFilterValue, int diagonalToFilterValue) {
+    public static void checkResults (List<String> searchResults,String manufacturerFilterValue, int maxPriceFilterValue, int releasedAfterYearFilterValue, int diagonalFromFilterValue, int diagonalToFilterValue) {
         for (String url :searchResults) {
             logger.info("Checking TV URL:" + url);
             browser.navigate(url);
@@ -67,6 +59,5 @@ public class CatalogOnlinerTVs extends BaseForm {
             tvDetailPage.checkTVParameters(manufacturerFilterValue,maxPriceFilterValue,releasedAfterYearFilterValue, diagonalFromFilterValue, diagonalToFilterValue);
         }
     }
-
 
 }

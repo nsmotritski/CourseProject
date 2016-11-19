@@ -3,6 +3,7 @@ package onliner;
 import onliner.forms.CatalogOnlinerPage;
 import onliner.forms.CatalogOnlinerTVs;
 import onliner.forms.OnlinerHomePage;
+import onliner.forms.TVDetailPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -15,12 +16,24 @@ import webdriver.elements.Link;
 import java.util.ArrayList;
 import java.util.List;
 
+import static onliner.forms.CatalogOnlinerTVs.checkResults;
+
 public class FindUsingFiltersTest extends BaseTest {
     int maxPrice;
     String manufacturer;
     int minReleaseYear;
     int diagonalMin;
     int diagonalMax;
+    List<String> searchResults;
+
+  /*  public void checkResults (String manufacturerFilterValue, int maxPriceFilterValue, int releasedAfterYearFilterValue, int diagonalFromFilterValue, int diagonalToFilterValue) {
+        for (String url :searchResults) {
+            logger.info("Checking TV URL:" + url);
+            browser.navigate(url);
+            TVDetailPage tvDetailPage = new TVDetailPage();
+            tvDetailPage.checkTVParameters(manufacturerFilterValue,maxPriceFilterValue,releasedAfterYearFilterValue, diagonalFromFilterValue, diagonalToFilterValue);
+        }
+    }*/
 
 
 
@@ -36,7 +49,6 @@ public class FindUsingFiltersTest extends BaseTest {
 
     @Test
     public void runTest() {
-
 
         logger.step(1);
         OnlinerHomePage onlinerHomePage = new OnlinerHomePage();
@@ -57,9 +69,8 @@ public class FindUsingFiltersTest extends BaseTest {
 
         logger.step(4);
         browser.waitForListOfElements(catalogOnlinerTVs.searchResultsDiv,".//div[@id='schema-products']//div[contains(@class,'title')]");
-
-        logger.step(5);
-        catalogOnlinerTVs.checkResults(manufacturer,maxPrice,minReleaseYear,diagonalMin,diagonalMax);
+        searchResults = catalogOnlinerTVs.getSearchRetults();
+        checkResults(searchResults,manufacturer,maxPrice,minReleaseYear,diagonalMin,diagonalMax);
 /*        List<WebElement> searchItemList = catalogOnlinerTVs.searchResultsDiv.getElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
         //searchItemList = browser.getDriver().findElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
         for (WebElement webElement: searchItemList) {
