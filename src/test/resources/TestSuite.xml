@@ -20,7 +20,7 @@
 			<parameter name="areaMin" value="40"/>
 			<parameter name="areaMax" value="50"/>
 			<parameter name="yearFrom" value="2000"/>
-			<class name="onliner.FindTVUsingFiltersTest" />
+			<class name="onliner.FindRealtyUsingFilters" />
 		</classes>
 	</test>
 </suite>

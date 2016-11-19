@@ -3,6 +3,7 @@ package onliner;
 import onliner.forms.CatalogOnlinerPage;
 import onliner.forms.CatalogOnlinerTVs;
 import onliner.forms.OnlinerHomePage;
+import onliner.forms.RealtyOnlinerPage;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -11,21 +12,21 @@ import webdriver.BaseTest;
 import java.util.List;
 
 public class FindRealtyUsingFilters extends BaseTest {
+    int minPrice;
     int maxPrice;
-    String manufacturer;
-    int minReleaseYear;
-    int diagonalMin;
-    int diagonalMax;
+    int areaMin;
+    int areaMax;
+    int yearFrom;
     List<String> searchResults;
 
     @BeforeTest
-    @Parameters({"maxPrice", "manufacturer", "minimumReleaseYear", "diagonalMin", "diagonalMax"})
-    public void beforeTest(int maximumPrice, String manufacturerValue, int minimumReleaseYear, int diagonalMinimum, int diagonalMaximum) {
+    @Parameters({"minPrice", "maxPrice", "areaMin", "areaMax", "yearFrom"})
+    public void beforeTest(int minimumPrice,int maximumPrice, int minimumArea,int maximumArea, int minimumReleaseYear) {
+        minPrice = minimumPrice;
         maxPrice = maximumPrice;
-        manufacturer = manufacturerValue;
-        minReleaseYear = minimumReleaseYear;
-        diagonalMin = diagonalMinimum;
-        diagonalMax = diagonalMaximum;
+        areaMin = minimumArea;
+        areaMax = maximumArea;
+        yearFrom = minimumReleaseYear;
     }
 
     @Test
@@ -36,15 +37,13 @@ public class FindRealtyUsingFilters extends BaseTest {
         browser.windowMaximise();
 
         logger.step(2);
-        onlinerHomePage.clickCatalog();
+        onlinerHomePage.clickRealty();
 
         logger.step(3);
-        CatalogOnlinerPage catalogOnlinerPage = new CatalogOnlinerPage();
-        catalogOnlinerPage.navigateMenuItem();
+        RealtyOnlinerPage realtyOnlinerPage = new RealtyOnlinerPage();
 
         logger.step(4);
-        CatalogOnlinerTVs catalogOnlinerTVs = new CatalogOnlinerTVs();
-        catalogOnlinerTVs.applyFilters(maxPrice, minReleaseYear, diagonalMin + "0", diagonalMax + "0");
+        realtyOnlinerPage.applyFilters(minPrice,maxPrice,areaMin,areaMax,yearFrom);
         logger.info("All Filters applied correctly");
 
 
