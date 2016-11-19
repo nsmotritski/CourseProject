@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Demo Test Plan" verbose="1">
-	
+	<!--
 	<test name="Functional Tests" preserve-order="true">
 		<classes>
 			<parameter name="manufacturer" value="Samsung"/>
@@ -8,7 +8,19 @@
 			<parameter name="minimumReleaseYear" value="2013"/>
 			<parameter name="diagonalMin" value="39"/>
 			<parameter name="diagonalMax" value="42"/>
- 			<class name="onliner.FindUsingFiltersTest" />
+ 			<class name="onliner.FindTVUsingFiltersTest" />
         </classes>
+	</test>
+	-->
+	<test name="Functional Tests" preserve-order="true">
+		<classes>
+			<parameter name="minPrice" value="40000"/>
+			<parameter name="maxPrice" value="50000"/>
+			<parameter name="numberOfRooms" value="2"/>
+			<parameter name="areaMin" value="40"/>
+			<parameter name="areaMax" value="50"/>
+			<parameter name="yearFrom" value="2000"/>
+			<class name="onliner.FindTVUsingFiltersTest" />
+		</classes>
 	</test>
 </suite>

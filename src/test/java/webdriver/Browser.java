@@ -201,14 +201,16 @@ public final class Browser {
 		}
 	}
 
-	public void waitForListOfElements (BaseElement baseElement,String locator) {
+	public List<String> waitForListOfElements (BaseElement baseElement,String locator) {
 		//form.wait()getUserWindow().$.active == 0
 		/*for (WebElement webElement:searchResults) {
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			driver.findElement(webElement.);
 		}*/
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		baseElement.getElements(By.xpath(locator));
+
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		List <String> elementsList = baseElement.getElements(By.xpath(locator));
+		return elementsList;
 	}
 	
 

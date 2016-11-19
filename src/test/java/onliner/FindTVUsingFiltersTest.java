@@ -3,22 +3,16 @@ package onliner;
 import onliner.forms.CatalogOnlinerPage;
 import onliner.forms.CatalogOnlinerTVs;
 import onliner.forms.OnlinerHomePage;
-import onliner.forms.TVDetailPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import webdriver.BaseTest;
-import webdriver.elements.Link;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static onliner.forms.CatalogOnlinerTVs.checkResults;
 
-public class FindUsingFiltersTest extends BaseTest {
+public class FindTVUsingFiltersTest extends BaseTest {
     int maxPrice;
     String manufacturer;
     int minReleaseYear;
@@ -55,7 +49,7 @@ public class FindUsingFiltersTest extends BaseTest {
         browser.windowMaximise();
 
         logger.step(2);
-        onlinerHomePage.clickMenuItem();
+        onlinerHomePage.clickCatalog();
 
         logger.step(3);
         CatalogOnlinerPage catalogOnlinerPage = new CatalogOnlinerPage();
@@ -67,9 +61,12 @@ public class FindUsingFiltersTest extends BaseTest {
         logger.info("All Filters applied correctly");
 
 
-        logger.step(4);
+        logger.step(5);
         browser.waitForListOfElements(catalogOnlinerTVs.searchResultsDiv,".//div[@id='schema-products']//div[contains(@class,'title')]");
         searchResults = catalogOnlinerTVs.getSearchRetults();
+        for (String s:searchResults) {
+            logger.info(s);
+        }
         checkResults(searchResults,manufacturer,maxPrice,minReleaseYear,diagonalMin,diagonalMax);
 /*        List<WebElement> searchItemList = catalogOnlinerTVs.searchResultsDiv.getElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
         //searchItemList = browser.getDriver().findElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
