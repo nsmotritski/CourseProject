@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Demo Test Plan" verbose="1">
+<suite name="Onliner Test Plan" verbose="1">
 	<!--
-	<test name="Functional Tests" preserve-order="true">
+	<test name="Check that the TVs are found according to the filters applied" preserve-order="true">
 		<classes>
 			<parameter name="manufacturer" value="Samsung"/>
 			<parameter name="maxPrice" value="1000"/>
@@ -12,13 +12,13 @@
         </classes>
 	</test>
 	-->
-	<test name="Functional Tests" preserve-order="true">
+	<test name="Check that realty can be bought for the specified price" preserve-order="true">
 		<classes>
 			<parameter name="minPrice" value="40000"/>
 			<parameter name="maxPrice" value="50000"/>
 			<parameter name="numberOfRooms" value="2"/>
-			<parameter name="areaMin" value="40"/>
-			<parameter name="areaMax" value="50"/>
+			<parameter name="areaMin" value="300"/>
+			<parameter name="areaMax" value="400"/>
 			<parameter name="yearFrom" value="2000"/>
 			<class name="onliner.FindRealtyUsingFilters" />
 		</classes>

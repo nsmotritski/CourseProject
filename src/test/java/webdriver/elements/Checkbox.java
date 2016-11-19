@@ -22,4 +22,5 @@ public class Checkbox extends BaseElement {
     public boolean isEnabled(){
         return this.getElement().isEnabled();
     }
+    
 }

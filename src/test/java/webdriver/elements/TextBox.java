@@ -2,6 +2,7 @@ package webdriver.elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 
 
 /**
@@ -67,7 +68,8 @@ public class TextBox extends BaseElement {
 	 */
 	public void setText(final String value) {
 		waitForIsElementPresent();
-		element.clear();
+		element.sendKeys(Keys.CONTROL + "a");
+		element.sendKeys(Keys.DELETE);
 		type(value);
 	}
 

@@ -4,6 +4,7 @@ import onliner.forms.CatalogOnlinerPage;
 import onliner.forms.CatalogOnlinerTVs;
 import onliner.forms.OnlinerHomePage;
 import onliner.forms.RealtyOnlinerPage;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -41,12 +42,11 @@ public class FindRealtyUsingFilters extends BaseTest {
 
         logger.step(3);
         RealtyOnlinerPage realtyOnlinerPage = new RealtyOnlinerPage();
-
-        logger.step(4);
         realtyOnlinerPage.applyFilters(minPrice,maxPrice,areaMin,areaMax,yearFrom);
         logger.info("All Filters applied correctly");
 
-
-        logger.step(5);
+        logger.step(4);
+        realtyOnlinerPage.waitSearchResultsLoaded();
+        Assert.assertTrue(realtyOnlinerPage.isSearchResultFound());
     }
 }

@@ -6,7 +6,7 @@ import webdriver.elements.Link;
 
     public class OnlinerHomePage extends BaseForm {
         private Link catalogMenuItem = new Link(By.xpath("//span[.='Каталог']/parent::a"),"TopMenuCatalog");
-        private Link realtyMenuItem = new Link(By.xpath("//span[.='Каталог']/parent::a"),"TopMenuCatalog");
+        private Link realtyMenuItem = new Link(By.xpath("//span[.='Дома и квартиры']/parent::a"),"TopMenuRealty");
 
 
         public OnlinerHomePage() {
