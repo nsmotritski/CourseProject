@@ -203,7 +203,7 @@ public final class Browser {
 
 	public List<String> waitForListOfElements (BaseElement baseElement,String locator) {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		List <String> elementsList = baseElement.getElements(By.xpath(locator));
+		List <String> elementsList = baseElement.getElementsURLs(By.xpath(locator));
 		return elementsList;
 	}
 	

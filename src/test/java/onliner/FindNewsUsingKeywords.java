@@ -1,6 +1,5 @@
 package onliner;
 
-import onliner.forms.AutoOnlinerPage;
 import onliner.forms.NewsOnlinerPage;
 import onliner.forms.OnlinerHomePage;
 import org.testng.Assert;
@@ -37,6 +36,6 @@ public class FindNewsUsingKeywords extends BaseTest {
 
         logger.step(4);
         newsOnlinerPage.waitSearchResultsLoaded();
-        Assert.assertTrue(autoOnlinerPage.isSearchResultFound());
+        Assert.assertTrue(newsOnlinerPage.newsWithKeywordIsPresent(keyword1,keyword2));
     }
 }

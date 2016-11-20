@@ -9,6 +9,7 @@ import webdriver.elements.Link;
         private Link realtyMenuItem = new Link(By.xpath("//span[.='Дома и квартиры']/parent::a"),"TopMenuRealty");
         private Link autoMenuItem = new Link(By.xpath("//span[.='Автобарахолка']/parent::a"),"TopMenuAuto");
         private Link newsMenuItem = new Link(By.xpath(".//h2/a[.='Технологии']"),"News Technologies");
+        private Link baraholkaMenuItem = new Link(By.xpath("//span[.='Барахолка']/parent::a"));
 
 
         public OnlinerHomePage() {
@@ -24,5 +25,7 @@ import webdriver.elements.Link;
         public void clickAuto() { autoMenuItem.click(); }
 
         public void clickTechNews() { newsMenuItem.click(); }
+
+        public void clickBaraholka () { baraholkaMenuItem.click(); }
 
     }

@@ -16,7 +16,7 @@ public class CatalogOnlinerTVs extends BaseForm {
     private List<String> searchResults;
 
     public List<String> getSearchRetults () {
-        searchResults = searchResultsDiv.getElements(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
+        searchResults = searchResultsDiv.getElementsURLs(By.xpath(".//div[@id='schema-products']//div[contains(@class,'title')]"));
     return searchResults;
     }
 

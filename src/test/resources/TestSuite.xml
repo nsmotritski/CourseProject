@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Onliner Test Plan" verbose="1">
-	<!--
+	<!--  -->
 	<test name="Check that the TVs are found according to the filters applied" preserve-order="true">
 		<classes>
 			<parameter name="manufacturer" value="Samsung"/>
@@ -11,7 +11,8 @@
  			<class name="onliner.FindTVUsingFiltersTest" />
         </classes>
 	</test>
-	-->
+
+	<!--
 	<test name="Check that realty can be found using filters" preserve-order="true">
 		<classes>
 			<parameter name="minPrice" value="40000"/>
@@ -23,6 +24,7 @@
 			<class name="onliner.FindRealtyUsingFilters" />
 		</classes>
 	</test>
+	-->
 	<!--
 	<test name="Check that car can be found using filters" preserve-order="true">
 		<classes>
@@ -33,6 +35,24 @@
 			<parameter name="yearFrom" value="2011"/>
 			<parameter name="engineType" value="Дизель"/>
 			<class name="onliner.FindAutoUsingFilters" />
+		</classes>
+	</test>
+	-->
+	<!--
+	<test name="Check that there are tech news containing keywords" preserve-order="true">
+		<classes>
+			<parameter name="keyword1" value="Саймон"/>
+			<parameter name="keyword2" value="Берри"/>
+			<class name="onliner.FindNewsUsingKeywords" />
+		</classes>
+	</test>
+	-->
+	<!--
+	<test name="Check that there are items in Baraholka containing keywords" preserve-order="true">
+		<classes>
+			<parameter name="keyword1" value="журнальный"/>
+			<parameter name="keyword2" value="столик"/>
+			<class name="onliner.FindItemUsingKeywords" />
 		</classes>
 	</test>
 	-->

@@ -76,7 +76,7 @@ public abstract class BaseElement extends BaseEntity {
 	 * @return
 	 * @return List<String>
 	 */
-	public List<String> getElements(By locator) {
+	public List<String> getElementsURLs(By locator) {
 		List<String> searchResultURLs = new ArrayList<String>();
 		List<WebElement> elements = browser.getDriver().findElements(locator);
 		for (WebElement webElement:elements) {
@@ -84,6 +84,16 @@ public abstract class BaseElement extends BaseEntity {
 		}
 		return searchResultURLs;
 	}
+
+	public List<String> getElementsTexts(By locator) {
+		List<String> searchResultURLs = new ArrayList<String>();
+		List<WebElement> elements = browser.getDriver().findElements(locator);
+		for (WebElement webElement:elements) {
+			searchResultURLs.add(webElement.getText());
+		}
+		return searchResultURLs;
+	}
+
 
 
 
