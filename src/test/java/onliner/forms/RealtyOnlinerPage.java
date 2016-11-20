@@ -9,7 +9,6 @@ import webdriver.elements.Link;
 import webdriver.elements.TextBox;
 
 public class RealtyOnlinerPage extends BaseForm {
-    //private Link menuItemLink = new Link(By.xpath("//div[@class='catalog-bar']/ul/li/a[.='Телевизоры']"),"MenuItemLink");
     private TextBox searchPriceMin = new TextBox(By.xpath(".//*[@id='search-filter-price-from']"),"Search Price Min");
     private TextBox searchPriceMax = new TextBox(By.xpath(".//*[@id='search-filter-price-to']"),"Search Price Max");
     private Checkbox numberOfRooms = new Checkbox(By.xpath(".//div[@id='search-filter']//input[contains(@data-bind,'2')]"),"Number Of Rooms");
@@ -35,7 +34,7 @@ public class RealtyOnlinerPage extends BaseForm {
 
     public void setMaxPrice (Integer i) {searchPriceMax.setText(i.toString());}
 
-    public void setNumberOfRooms () {numberOfRooms.sendKeys(Keys.SPACE);
+    public void setNumberOfRooms () {numberOfRooms.click();//.sendKeys(Keys.SPACE);
     }
 
     public void setAreaMin(Integer i) {

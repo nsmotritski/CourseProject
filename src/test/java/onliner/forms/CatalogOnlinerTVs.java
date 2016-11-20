@@ -21,7 +21,7 @@ public class CatalogOnlinerTVs extends BaseForm {
     }
 
     public CatalogOnlinerTVs() {
-        super(By.xpath("//div[@id='fast-search']/form/input[@data-project='catalog_public']"), "Catalog Onliner.by");
+        super(By.xpath("//div[@id='fast-search']/form/input[@data-project='catalog_public']"), "Catalog TVs Onliner.by");
     }
 
     public void setManufacturerFilter () {

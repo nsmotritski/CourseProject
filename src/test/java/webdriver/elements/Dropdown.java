@@ -61,7 +61,7 @@ public class Dropdown extends BaseElement {
      */
     public void setText(final String value) {
         waitForIsElementPresent();
-        element.clear();
+        //element.clear();
         type(value);
     }
 

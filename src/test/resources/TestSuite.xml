@@ -12,15 +12,28 @@
         </classes>
 	</test>
 	-->
-	<test name="Check that realty can be bought for the specified price" preserve-order="true">
+	<test name="Check that realty can be found using filters" preserve-order="true">
 		<classes>
 			<parameter name="minPrice" value="40000"/>
 			<parameter name="maxPrice" value="50000"/>
 			<parameter name="numberOfRooms" value="2"/>
-			<parameter name="areaMin" value="300"/>
-			<parameter name="areaMax" value="400"/>
+			<parameter name="areaMin" value="40"/>
+			<parameter name="areaMax" value="60"/>
 			<parameter name="yearFrom" value="2000"/>
 			<class name="onliner.FindRealtyUsingFilters" />
 		</classes>
 	</test>
+	<!--
+	<test name="Check that car can be found using filters" preserve-order="true">
+		<classes>
+			<parameter name="minPrice" value="10000"/>
+			<parameter name="maxPrice" value="20000"/>
+			<parameter name="manufacturer" value="Citroen"/>
+			<parameter name="bodyType" value="Минивен"/>
+			<parameter name="yearFrom" value="2011"/>
+			<parameter name="engineType" value="Дизель"/>
+			<class name="onliner.FindAutoUsingFilters" />
+		</classes>
+	</test>
+	-->
 </suite>
