@@ -3,6 +3,7 @@ package onliner;
 import onliner.forms.CatalogOnlinerPage;
 import onliner.forms.CatalogOnlinerTVs;
 import onliner.forms.OnlinerHomePage;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -75,5 +76,10 @@ public class FindTVUsingFiltersTest extends BaseTest {
         }
         logger.info("Final line before assert");
         catalogOnlinerTVs.checkResults(searchItemList,"Samsung","1000","","39","42");*/
+    }
+
+    @AfterTest
+    public void afterTest () {
+        browser.checkAndKill();
     }
 }

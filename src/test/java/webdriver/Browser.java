@@ -27,7 +27,7 @@ import com.google.common.base.Strings;
 /**
  * The main class to access the browser, which extends the capabilities of the standard Webdriver
  */
-public final class Browser {
+public final class Browser extends BaseEntity {
 
 	
 	private static final long IMPLICITY_WAIT = 10;
@@ -266,9 +266,12 @@ public final class Browser {
 		return driver.getCurrentUrl();
 	}
 
-	
+	@Override
+	protected String formatLogMsg(String message) {
+		return message;
+	}
 
-	
+
 	/**
 	 * Browsers enumeration
 	 */
